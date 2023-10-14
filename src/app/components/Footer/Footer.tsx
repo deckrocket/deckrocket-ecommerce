@@ -1,4 +1,3 @@
-import "./Footer.scss";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../assets/images/logo_deckrocket.png";
@@ -26,11 +25,11 @@ const Footer = () => {
             <div className="flex flex-col justify-center items-center gap-3">
                 <a href="tel:123-456-1234p123" className="flex gap-4">
                     <Image src={callIcon} alt={"icon for calling"} />
-                    <p>1-123-456-1234 ext.123</p>
+                    1-123-456-1234 ext.123
                 </a>
                 <a href="mailto:service@deckrocket.com" className="flex gap-4">
                     <Image src={mailIcon} alt="icon for mailing" />
-                    <p>Customer Service</p>
+                    Customer Service
                 </a>
             </div>
 

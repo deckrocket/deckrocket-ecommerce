@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    
+    &__left {
+        width: 50%;
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-start;
+    }
+
+    &__right {
+        @extend .header__left;
+        justify-content: flex-end;
+    }
+}

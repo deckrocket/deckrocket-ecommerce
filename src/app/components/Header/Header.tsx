@@ -8,7 +8,11 @@ import hamburger from '../../assets/icons/icon_hamburger.svg';
 import profile from '../../assets/icons/icon_profile.svg';
 import logo from "../../assets/images/logo_deckrocket.png";
 
-const Header = (hasSearchBar: boolean) => {
+type headerprop = {
+    hasSearchBar: boolean
+}
+
+const Header = ({ hasSearchBar }: headerprop) => {
     return (
         <header className='header'>
             <div className='header__left'>

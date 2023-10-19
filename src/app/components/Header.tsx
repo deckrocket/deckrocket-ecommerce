@@ -14,8 +14,8 @@ type headerprop = {
 const Header = ({ hasSearchBar }: headerprop) => {
 	return (
 		<header className="flex flex-col bg-slate-100 px-8 py-4 gap-2">
-			<div className="flex items-center">
-				<div className="w-2/4 flex gap-4 justify-start items-center">
+			<div className="flex items-center justify-between">
+				<div className="flex gap-4">
 					<Link href="/">
 						<Image src={hamburger} alt="hamburger menu icon" />
 					</Link>
@@ -23,7 +23,7 @@ const Header = ({ hasSearchBar }: headerprop) => {
 						<Image src={logo} alt="deckrocket logo" width={200} />
 					</Link>
 				</div>
-				<div className="w-2/4 flex gap-4 justify-end">
+				<div className="flex gap-4">
 					<Link href="/">
 						<Image src={profile} alt="user profile icon" />
 					</Link>

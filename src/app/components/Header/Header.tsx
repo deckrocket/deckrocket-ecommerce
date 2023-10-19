@@ -1,4 +1,3 @@
-import './Header.scss';
 import Link from "next/link";
 import Image from "next/image";
 
@@ -14,8 +13,8 @@ type headerprop = {
 
 const Header = ({ hasSearchBar }: headerprop) => {
     return (
-        <header className='header'>
-            <div className='header__left'>
+        <header className='flex flex-col'>
+            <div className='w-2/4 flex gap-4 justify-start'>
                 <Link href="/">
                     <Image src={hamburger} alt="hamburger menu icon" />
                 </Link>
@@ -23,7 +22,7 @@ const Header = ({ hasSearchBar }: headerprop) => {
                     <Image src={logo} alt="deckrocket logo" />
                 </Link>
             </div>
-            <div className='header__right'>
+            <div className='w-2/4 flex gap-4 justify-end'>
                 <Link href="/">
                     <Image src={profile} alt="user profile icon" />
                 </Link>

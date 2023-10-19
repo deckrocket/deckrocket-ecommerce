@@ -3,50 +3,55 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
+	--foreground-rgb: 0, 0, 0;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	color: rgb(var(--foreground-rgb));
+	background: linear-gradient(
+			to bottom,
+			transparent,
+			rgb(var(--background-end-rgb))
+		)
+		rgb(var(--background-start-rgb));
 }
 
 /* Text Default Style */
-h1, h2 {
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  font-weight: 600;
+h1,
+h2 {
+	font-size: 1.25rem;
+	line-height: 1.5rem;
+	font-weight: 600;
 }
 
-h3, .p-large {
-  font-size: 1rem;
-  line-height: 1.1875rem;
+h3,
+.p-large {
+	font-size: 1rem;
+	line-height: 1.1875rem;
 }
 
-h4, a, p, label {
-  font-size: 0.75rem;
-  line-height: 0.9375rem;
+h4,
+a,
+p,
+label {
+	font-size: 0.75rem;
+	line-height: 0.9375rem;
 }
 
 .p-small {
-  font-size: 0.625rem;
-  line-height: 0.75rem;
+	font-size: 0.625rem;
+	line-height: 0.75rem;
 }
 
 /* Divide Line */
 .divider {
-  border-bottom: 1px solid black;
+	border-bottom: 1px solid black;
 }

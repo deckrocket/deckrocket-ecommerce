@@ -1,15 +1,15 @@
-import Link from "next/link";
-import SearchResultCard from "./components/SearchResultCard";
-import ShoppingCartCard from "./components/ShoppingCartCard";
-import ItemDetails from "./components/ItemDetails";
+import Link from 'next/link';
+import SearchResultCard from './components/SearchResultCard';
+import ShoppingCartCard from './components/ShoppingCartCard';
+import ItemDetails from './components/ItemDetails';
 
 export default function Home() {
-  return (
-    <>
-      <h1>This is Main Page!</h1>
-      <Link href="/testpage">Go to Test Page</Link>
+	return (
+		<>
+			<h1>This is Main Page!</h1>
+			<Link href="/testpage">Go to Test Page</Link>
 
-      {/* <SearchResultCard
+			{/* <SearchResultCard
         game="Magic: The Gathering"
         setType="Commander Masters"
         name="Kodama's Reach (Borderless)"
@@ -30,9 +30,7 @@ export default function Home() {
         currency="CAD"
       />  */}
 
-      <ItemDetails
-        id={23243}
-      />
-    </>
-  );
+			<ItemDetails id={23243} />
+		</>
+	);
 }

@@ -1,8 +1,8 @@
-import grid from './assets/icons/icon_grid.svg';
-import list from './assets/icons/icon_list.svg';
+import grid from '../assets/icons/icon_grid.svg';
+import list from '../assets/icons/icon_list.svg';
 import Image from 'next/image';
-import SearchResultCard from './components/SearchResultCard';
-const SearchResultsPage = () => {
+import SearchResultCard from '../components/SearchResultCard';
+const page = () => {
 	return (
 		<>
 			<section className="flex flex-col gap-4 bg-slate-100">
@@ -57,4 +57,4 @@ const SearchResultsPage = () => {
 	);
 };
 
-export default SearchResultsPage;
+export default page;

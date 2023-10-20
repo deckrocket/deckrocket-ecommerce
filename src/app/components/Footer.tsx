@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '../../assets/images/logo_deckrocket.png';
-import callIcon from '../../assets/icons/icon_call.svg';
-import mailIcon from '../../assets/icons/icon_mail.svg';
-import facebookIcon from '../../assets/icons/icon_facebook.svg';
-import instagramIcon from '../../assets/icons/icon_instagram.svg';
-import xIcon from '../../assets/icons/icon_x.svg';
-import youtubeIcon from '../../assets/icons/icon_youtube.svg';
+import logo from '../assets/images/logo_deckrocket.png';
+import callIcon from '../assets/icons/icon_call.svg';
+import mailIcon from '../assets/icons/icon_mail.svg';
+import facebookIcon from '../assets/icons/icon_facebook.svg';
+import instagramIcon from '../assets/icons/icon_instagram.svg';
+import xIcon from '../assets/icons/icon_x.svg';
+import youtubeIcon from '../assets/icons/icon_youtube.svg';
 
 const Footer = () => {
 	return (

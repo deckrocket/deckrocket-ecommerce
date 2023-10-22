@@ -27,7 +27,7 @@ const Header = ({ hasSearchBar }: headerprop) => {
 					<Link href="/">
 						<Image src={profile} alt="user profile icon" />
 					</Link>
-					<Link href="/">
+					<Link href="/cart">
 						<Image src={cart} alt="shopping cart icon" />
 					</Link>
 				</div>

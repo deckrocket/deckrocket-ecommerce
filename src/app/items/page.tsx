@@ -41,7 +41,7 @@ export default function ItemDetails() {
 					/>
 				</div>
 
-				<div className="my-4 flex flex-col gap-4 rounded-l bg-gray-300 p-4 justify-center">
+				<div className="my-4 flex flex-col gap-4 rounded-lg bg-gray-300 p-4 justify-center">
 					<p className="p-large font-bold">${item.price} CAD</p>
 					<div className="flex">
 						<div className="flex w-1/2 border-r-2 border-solid border-black">

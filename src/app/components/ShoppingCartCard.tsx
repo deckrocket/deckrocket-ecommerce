@@ -1,5 +1,9 @@
+'use client';
+import Image from 'next/image';
+
 type shoppingCartCard = {
 	name: string;
+	qty: number;
 	imgUrl: string;
 	quality: string;
 	foilType: string;
@@ -10,6 +14,7 @@ type shoppingCartCard = {
 
 export default function ShoppingCartCard({
 	name,
+	qty,
 	imgUrl,
 	quality,
 	foilType,
@@ -17,10 +22,20 @@ export default function ShoppingCartCard({
 	setType,
 	currency
 }: shoppingCartCard) {
+	function onClickHandler() {
+		return;
+	}
+
 	return (
-		<div className="m-4 flex gap-8 rounded bg-gray-200 p-4 shadow-md">
+		<article className="flex gap-8 rounded bg-gray-200 max-w-[450px] p-4 shadow-md">
 			<div>
-				<img className="h-[200px] w-[160px] rounded" src={imgUrl} alt={name} />
+				<Image
+					className="rounded"
+					src={imgUrl}
+					alt={name}
+					width={160}
+					height={200}
+				/>
 			</div>
 			<div className="flex flex-col gap-2">
 				<p className="text-sm text-gray-500">{setType}</p>
@@ -31,8 +46,21 @@ export default function ShoppingCartCard({
 				<p className="text-xl font-bold">
 					${price} {currency}
 				</p>
-				<div>{/* Area to hold form input? for quantity and remove link */}</div>
+				<div className="flex justify-between items-center">
+					{/* Area to hold form input? for quantity and remove link */}
+					<input
+						className="text-sm text-center w-12 rounded border border-gray-300 py-1"
+						type="number"
+						name="qty"
+						min="1"
+						defaultValue={qty}
+						step={1}
+					/>
+					<p className="underline text-gray-500" onClick={onClickHandler}>
+						Remove
+					</p>
+				</div>
 			</div>
-		</div>
+		</article>
 	);
 }

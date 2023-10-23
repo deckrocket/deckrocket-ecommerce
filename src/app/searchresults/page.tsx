@@ -7,7 +7,7 @@ const page = () => {
 		<main>
 			<section className="flex flex-col gap-4 bg-slate-300">
 				<div className="flex items-center justify-between p-4">
-					<div className="flex gap-4 ">
+					<div className="flex">
 						<div className="px-2 py-1 rounded text-center bg-gray-700">
 							Filter
 						</div>

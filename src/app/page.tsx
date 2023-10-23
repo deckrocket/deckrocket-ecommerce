@@ -1,4 +1,3 @@
-// import Link from 'next/link';
 import CardRecommend from './components/CardRecommend';
 import CardSetBanner from './components/CardSetBanner';
 import PromotionSlider from './components/PromotionSlider';

@@ -50,10 +50,10 @@ const CartPage = () => {
 	];
 
 	return (
-		<main className="flex flex-col w-full justify-center p-4">
+		<main className="flex flex-col w-full justify-center items-center p-4">
 			<h2>Shopping Cart</h2>
 			<CartSummary />
-			<section className="flex flex-col w-full justify-center gap-4 mt-6">
+			<section className="flex flex-col w-full justify-center items-center gap-4 mt-6">
 				{shoppingList.map((item) => {
 					return (
 						<ShoppingCartCard

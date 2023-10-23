@@ -15,7 +15,7 @@ const Header = ({ hasSearchBar }: headerprop) => {
 	return (
 		<header className="flex flex-col bg-slate-100 px-8 py-4 gap-2">
 			<div className="flex items-center justify-between">
-				<div className="flex gap-4">
+				<div className="flex gap-4 items-center">
 					<Link href="/">
 						<Image src={hamburger} alt="hamburger menu icon" />
 					</Link>

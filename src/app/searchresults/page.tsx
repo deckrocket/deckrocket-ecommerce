@@ -4,8 +4,8 @@ import Image from 'next/image';
 import SearchResultCard from '../components/SearchResultCard';
 const page = () => {
 	return (
-		<>
-			<section className="flex flex-col gap-4 bg-slate-100">
+		<main>
+			<section className="flex flex-col gap-4 bg-slate-300">
 				<div className="flex items-center justify-between p-4">
 					<div className="flex gap-4 ">
 						<div className="px-2 py-1 rounded text-center bg-gray-700">
@@ -17,12 +17,10 @@ const page = () => {
 					</div>
 					<div className="flex gap-4">
 						<div className="bg-slate-100 p-2 w-fit flex justify-center align-center">
-							{' '}
-							<Image src={grid} alt="search results grid view"></Image>{' '}
+							<Image src={grid} alt="search results grid view"></Image>
 						</div>
 						<div className="bg-slate-100 p-2 w-fit flex justify-center align-center">
-							{' '}
-							<Image src={list} alt="search results list view"></Image>{' '}
+							<Image src={list} alt="search results list view"></Image>
 						</div>
 					</div>
 				</div>
@@ -53,7 +51,7 @@ const page = () => {
 					currency="CAD"
 				/>
 			</section>
-		</>
+		</main>
 	);
 };
 

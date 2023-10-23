@@ -45,13 +45,16 @@ export default function ItemDetails() {
 					<p className="p-large font-bold">${item.price} CAD</p>
 					<div className="flex">
 						<div className="flex w-1/2 border-r-2 border-solid border-black">
-							<input checked type="radio" />
-							<p className="w-1/2">NM</p>
-							<p className="w-1/2">PL</p>
+							<input type="radio" />
+							<p className="ml-2 w-1/2">NM</p>
+							<input type="radio" />
+							<p className="ml-2 w-1/2">PL</p>
 						</div>
 						<div className="ml-4 flex w-1/2">
-							<p className="w-1/2">Non-Foil</p>
-							<p className="w-1/2">Foil</p>
+							<input type="radio" />
+							<p className="ml-2 w-1/2">Non-Foil</p>
+							<input type="radio" />
+							<p className="ml-2 w-1/2">Foil</p>
 						</div>
 					</div>
 					<div className="flex justify-between items-center">
@@ -80,28 +83,34 @@ export default function ItemDetails() {
 					<h2>Product Details</h2>
 					<p className="p-large">{item.desc}</p>
 					<div className="flex items-center">
-						<h3 className="font-bold">Name:</h3>
-						<p className="p-large">{item.name}</p>
+						<h3 className="font-bold">
+							Name: <span className="font-normal p-large">{item.name}</span>
+						</h3>
 					</div>
 					<div className="flex items-center">
-						<h3 className="font-bold">Rarity:</h3>
-						<p className="p-large">{item.rarity}</p>
+						<h3 className="font-bold">
+							Rarity: <span className="font-normal p-large">{item.rarity}</span>
+						</h3>
 					</div>
-					<div className="flex">
-						<h3 className="font-bold">Type:</h3>
-						<p className="p-large">{item.type}</p>
+					<div className="flex items-center">
+						<h3 className="font-bold">
+							Type: <span className="font-normal p-large">{item.type}</span>
+						</h3>
 					</div>
-					<div className="flex">
-						<h3 className="font-bold">Set:</h3>
-						<p className="p-large">{item.set}</p>
+					<div className="flex items-center">
+						<h3 className="font-bold">
+							Set: <span className="font-normal p-large">{item.set}</span>
+						</h3>
 					</div>
-					<div className="flex">
-						<h3 className="font-bold">Effect:</h3>
-						<p className="p-large">{item.effect}</p>
+					<div className="flex items-center">
+						<h3 className="font-bold">
+							Effect: <span className="font-normal p-large">{item.effect}</span>
+						</h3>
 					</div>
-					<div className="flex">
-						<h3 className="font-bold">Artist:</h3>
-						<p className="p-large">{item.artist}</p>
+					<div className="flex items-center">
+						<h3 className="font-bold">
+							Artist: <span className="font-normal p-large">{item.artist}</span>
+						</h3>
 					</div>
 				</div>
 				<div className="divider"></div>

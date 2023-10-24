@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Card {
+  id              Int      @id @default(autoincrement())
+  name            String
+  game            String   @default("Magic: The Gathering")
+  oracle_text     String
+  imageUrl        String
+  price           String
+  salesPercentage Int
+  qty             Int
+  foil            Boolean
+  condition       Boolean
+  rarity          String
+  type            String
+  set             String
+  flavor_text     String
+  issueNumber     String
+  artist          String
+  full_art        Boolean
+  layout          String
+  createAt        DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Promotion {
+  id     Int    @id @default(autoincrement())
+  title  String
+  imgUrl String
+  link   String
+}
+
+model LastestSets {
+  id     Int    @id @default(autoincrement())
+  title  String
+  imgUrl String
+  link   String
+}
+
+model ShoppingCart {
+  id     Int    @id @default(autoincrement())
+  userId String
+  itemId String
+  qty    Int
+}

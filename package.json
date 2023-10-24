@@ -8,13 +8,9 @@
 		"start": "next start",
 		"lint": "next lint",
 		"format": "npx prettier . --write",
-		"prepare": "husky install",
-		"rollback": "knex migrate:rollback",
-		"migrate": "knex migrate:latest",
-		"seed": "knex seed:run"
+		"prepare": "husky install"
 	},
 	"dependencies": {
-		"knex": "^3.0.1",
 		"next": "13.5.4",
 		"react": "^18",
 		"react-dom": "^18",

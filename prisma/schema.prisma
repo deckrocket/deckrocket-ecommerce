@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Card {
+  id            Int             @id @default(autoincrement())
+  name          String
+  game          String          @default("Magic: The Gathering")
+  oracleText    String?         @db.VarChar(1000)
+  imageUrl      String?
+  rarity        String
+  type          String
+  set           String
+  flavorText    String?
+  issueNumber   String
+  artist        String
+  fullArt       Boolean         @default(false)
+  layout        String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  CardInventory CardInventory[]
+}
+
+model CardInventory {
+  id              Int      @id @default(autoincrement())
+  salesPercentage Int      @default(0)
+  price           String
+  qty             Int
+  foil            Boolean  @default(false)
+  condition       String   @default("NM")
+  Card            Card     @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  cardId          Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Promotion {
+  id        Int      @id @default(autoincrement())
+  title     String
+  imgUrl    String
+  link      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model LastestSets {
+  id        Int      @id @default(autoincrement())
+  title     String
+  imgUrl    String
+  link      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ShoppingCart {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  itemId    String
+  qty       Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

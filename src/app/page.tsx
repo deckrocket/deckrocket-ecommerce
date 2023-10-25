@@ -108,6 +108,7 @@ export default function Home() {
 
 			{/* Latest Sets */}
 			<section className="divider-grey flex flex-col p-4 w-full justify-center">
+				``
 				<h2>LATEST SETS</h2>
 				{setData.map((set) => {
 					return (

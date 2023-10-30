@@ -15,7 +15,7 @@ model Card {
   name          String
   game          String          @default("Magic: The Gathering")
   oracleText    String?         @db.VarChar(1000)
-  imageUrl      String?
+  imageUrl      String          @default("/assets/card_deafult_image.jpg")
   rarity        String
   type          String
   set           String
@@ -43,12 +43,13 @@ model CardInventory {
 }
 
 model Promotion {
-  id        Int      @id @default(autoincrement())
-  title     String
-  imgUrl    String
-  link      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  title       String
+  imgUrl      String
+  link        String
+  onPromotion Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model LastestSets {
@@ -56,6 +57,7 @@ model LastestSets {
   title     String
   imgUrl    String
   link      String
+  latest    Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

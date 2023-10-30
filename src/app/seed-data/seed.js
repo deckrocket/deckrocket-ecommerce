@@ -83,3 +83,51 @@ function getVariations() {
 
 	return data;
 }
+
+export const promotionData = [
+	{
+		title: 'Promotion 1',
+		imgUrl: '/assets/images/promo/promotion-1.jpg',
+		link: '/testpage',
+		onPromotion: true
+	},
+	{
+		title: 'Promotion 2',
+		imgUrl: '/assets/images/promo/promotion-2.jpg',
+		link: '/testpage',
+		onPromotion: true
+	},
+	{
+		title: 'Promotion 3',
+		imgUrl: '/assets/images/promo/promotion-3.jpg',
+		link: '/testpage',
+		onPromotion: true
+	},
+	{
+		title: 'Promotion 4',
+		imgUrl: '/assets/images/promo/promotion-4.jpg',
+		link: '/testpage',
+		onPromotion: true
+	}
+];
+
+export const setData = [
+	{
+		title: 'Wilds of Eldraine',
+		imgUrl: '/assets/images/temp_banner_img.svg',
+		link: '/testpage',
+		latest: true
+	},
+	{
+		title: 'Wilds of Eldraine',
+		imgUrl: '/assets/images/temp_banner_img.svg',
+		link: '/testpage',
+		latest: true
+	},
+	{
+		title: 'Wilds of Eldraine',
+		imgUrl: '/assets/images/temp_banner_img.svg',
+		link: '/testpage',
+		latest: true
+	}
+];

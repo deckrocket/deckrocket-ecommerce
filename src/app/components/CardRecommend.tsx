@@ -6,21 +6,14 @@ type CardRecommendInfo = {
 	imgUrl: string;
 	alt: string;
 	price: string;
-	link: string;
 };
 
-const CardRecommend = ({
-	name,
-	imgUrl,
-	alt,
-	price,
-	link
-}: CardRecommendInfo) => {
+const CardRecommend = ({ name, imgUrl, alt, price }: CardRecommendInfo) => {
 	return (
 		<div className="w-full">
 			<Link
 				className="flex flex-col justify-center items-center gap-1"
-				href={link}
+				href={'/'}
 			>
 				<Image
 					className="rounded w-full"

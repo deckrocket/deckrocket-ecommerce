@@ -1,5 +1,10 @@
-import { PrismaClient } from '@prisma/client';
-import { cardTableData, cardInventoryData } from '../src/app/seed-data/seed.js';
+const {
+	cardTableData,
+	cardInventoryData,
+	promotionData,
+	setData
+} = require('../src/app/seed-data/seed.js');
+const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
@@ -46,6 +51,32 @@ async function main() {
 				qty,
 				foil,
 				condition
+			}
+		});
+	}
+
+	for (let promotion of promotionData) {
+		const { title, imgUrl, link, onPromotion } = promotion;
+
+		await prisma.promotion.create({
+			data: {
+				title,
+				imgUrl,
+				link,
+				onPromotion
+			}
+		});
+	}
+
+	for (let set of setData) {
+		const { title, imgUrl, link, latest } = set;
+
+		await prisma.lastestSets.create({
+			data: {
+				title,
+				imgUrl,
+				link,
+				latest
 			}
 		});
 	}

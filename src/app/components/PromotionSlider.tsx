@@ -14,6 +14,7 @@ type PromotionInfo = {
 	title: string;
 	imgUrl: string;
 	link: string;
+	onPromotion: boolean;
 };
 
 type PromotionInfoList = {

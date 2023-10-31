@@ -1,7 +1,9 @@
-import fs from 'fs';
+const fs = require('fs');
 const idArr = [];
-const data = JSON.parse(fs.readFileSync('./src/app/seed-data/seed-data.json'));
-export const cardTableData = data.map((card, i) => {
+const data = JSON.parse(
+	fs.readFileSync('./src/app/seed-data/seed-data.json').toString()
+);
+const cardTableData = data.map((card, i) => {
 	const {
 		id,
 		name,
@@ -47,10 +49,10 @@ function getDiscount(num) {
 	}
 }
 
-export const cardInventoryData = getVariations();
+const cardInventoryData = getVariations();
 
 function getVariations() {
-	const data = [];
+	let data = [];
 	for (let i = 1; i <= 4; i++) {
 		const variations = idArr.map((id) => {
 			let foil;
@@ -70,7 +72,7 @@ function getVariations() {
 
 			return {
 				cardId: id,
-				price: String(Math.round(Math.random() * 10000) / 100),
+				price: String(Math.round(Math.random() * 100) + 0.99),
 				qty: Math.round(Math.random() * 1000),
 				foil,
 				condition,
@@ -84,7 +86,7 @@ function getVariations() {
 	return data;
 }
 
-export const promotionData = [
+const promotionData = [
 	{
 		title: 'Promotion 1',
 		imgUrl: '/assets/images/promo/promotion-1.jpg',
@@ -111,7 +113,7 @@ export const promotionData = [
 	}
 ];
 
-export const setData = [
+const setData = [
 	{
 		title: 'Wilds of Eldraine',
 		imgUrl: '/assets/images/temp_banner_img.svg',
@@ -131,3 +133,10 @@ export const setData = [
 		latest: true
 	}
 ];
+
+module.exports = {
+	setData,
+	promotionData,
+	cardInventoryData,
+	cardTableData
+};

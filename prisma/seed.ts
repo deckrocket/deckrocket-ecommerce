@@ -1,10 +1,10 @@
-import {
+const {
 	cardTableData,
 	cardInventoryData,
 	promotionData,
 	setData
-} from '../src/app/seed-data/seed.js';
-import { PrismaClient } from '@prisma/client';
+} = require('../src/app/seed-data/seed.js');
+const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {

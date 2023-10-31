@@ -2,9 +2,40 @@ import grid from '../assets/icons/icon_grid.svg';
 import list from '../assets/icons/icon_list.svg';
 import Image from 'next/image';
 import SearchResultCard from '../components/SearchResultCard';
-const page = () => {
+import { useEffect, useState } from 'react';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+type typeProp = {
+	searchInput: string;
+};
+
+const page = async ({ searchInput }: typeProp) => {
+	const [isloading, setIsLoading] = useState(true);
+	let searchResults: Array<{ id: number }> = [];
+
+	useEffect(() => {
+		const fetchSearchResults = async () => {
+			searchResults = await prisma.card.findMany({
+				where: {
+					name: { contains: searchInput }
+				},
+				select: { id: true }
+			});
+		};
+
+		fetchSearchResults();
+		setIsLoading(false);
+	}, []);
+
+	if (isloading) {
+		return <p>Loading...</p>;
+	}
+
 	return (
 		<main>
+			{/* search options */}
 			<section className="flex flex-col bg-slate-200">
 				<div className="flex items-center justify-between p-4">
 					<div className="flex gap-4">
@@ -29,28 +60,15 @@ const page = () => {
 					Products
 				</p>
 			</section>
-			<section className="flex flex-col gap-4">
-				<SearchResultCard
-					game="Magic: The Gathering"
-					setType="Commander Masters"
-					name="Kodama's Reach (Borderless)"
-					imgUrl="/assets/images/magic-kodamas-reach.png"
-					rarity="Common"
-					id={649}
-					price={0.39}
-					currency="CAD"
-				/>
-				<SearchResultCard
-					game="Magic: The Gathering"
-					setType="Commander Masters"
-					name="Kodama's Reach (Borderless)"
-					imgUrl="/assets/images/magic-kodamas-reach.png"
-					rarity="Common"
-					id={649}
-					price={0.39}
-					currency="CAD"
-				/>
-			</section>
+
+			{/* search results */}
+			{!isloading && searchResults.length > 0 && (
+				<section className="flex flex-col gap-4">
+					{searchResults.map((card) => {
+						return <SearchResultCard id={card.id} />;
+					})}
+				</section>
+			)}
 		</main>
 	);
 };

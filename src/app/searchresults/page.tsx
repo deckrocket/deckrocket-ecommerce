@@ -2,7 +2,6 @@ import grid from '../assets/icons/icon_grid.svg';
 import list from '../assets/icons/icon_list.svg';
 import Image from 'next/image';
 import SearchResultCard from '../components/SearchResultCard';
-import { useEffect, useState } from 'react';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
@@ -12,26 +11,13 @@ type typeProp = {
 };
 
 const page = async ({ searchInput }: typeProp) => {
-	const [isloading, setIsLoading] = useState(true);
 	let searchResults: Array<{ id: number }> = [];
-
-	useEffect(() => {
-		const fetchSearchResults = async () => {
-			searchResults = await prisma.card.findMany({
-				where: {
-					name: { contains: searchInput }
-				},
-				select: { id: true }
-			});
-		};
-
-		fetchSearchResults();
-		setIsLoading(false);
-	}, []);
-
-	if (isloading) {
-		return <p>Loading...</p>;
-	}
+	searchResults = await prisma.card.findMany({
+		where: {
+			name: { contains: searchInput }
+		},
+		select: { id: true }
+	});
 
 	return (
 		<main>
@@ -62,7 +48,7 @@ const page = async ({ searchInput }: typeProp) => {
 			</section>
 
 			{/* search results */}
-			{!isloading && searchResults.length > 0 && (
+			{searchResults.length > 0 && (
 				<section className="flex flex-col gap-4">
 					{searchResults.map((card) => {
 						return <SearchResultCard id={card.id} />;

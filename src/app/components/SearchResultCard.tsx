@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { PrismaClient } from '@prisma/client';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 const prisma = new PrismaClient();
@@ -13,7 +12,7 @@ type cardDetailsTypes = {
 	id: number;
 	game: string;
 	name: string;
-	imageUrl: string | null;
+	imageUrl: string;
 	rarity: string;
 	type: string;
 } | null;
@@ -21,46 +20,36 @@ type cardDetailsTypes = {
 type cardPriceTypes = {
 	price: string;
 } | null;
-let cardDetails: cardDetailsTypes;
-let cardPrice: cardPriceTypes;
-export default function SearchResultCard({ id }: cardId) {
-	const [isloading, setIsLoading] = useState(true);
 
-	useEffect(() => {
-		const fetchCardDetails = async () => {
-			cardDetails = await prisma.card.findUnique({
-				where: { id },
-				select: {
-					id: true,
-					game: true,
-					name: true,
-					imageUrl: true,
-					rarity: true,
-					type: true
-				}
-			});
-			cardPrice = await prisma.cardInventory.findUnique({
-				where: { id },
-				select: {
-					price: true
-				}
-			});
-		};
-		fetchCardDetails();
-		setIsLoading(false);
-	}, []);
+const SearchResultCard = async ({ id }: cardId) => {
+	let cardDetails: cardDetailsTypes = await prisma.card.findUnique({
+		where: { id },
+		select: {
+			id: true,
+			game: true,
+			name: true,
+			imageUrl: true,
+			rarity: true,
+			type: true
+		}
+	});
 
-	if (isloading) {
-		return <p>Loading...</p>;
-	}
+	let cardPrice: cardPriceTypes = await prisma.cardInventory.findUnique({
+		where: { id },
+		select: {
+			price: true
+		}
+	});
 
 	return (
-		<div className="m-4 flex gap-8 rounded p-4 shadow-md">
+		<article className="m-4 flex gap-8 rounded p-4 shadow-md">
 			<div>
 				<Image
 					className="h-[200px] w-[160px] rounded"
-					src={cardDetails?.imageUrl}
-					alt={cardDetails?.name}
+					src={cardDetails!.imageUrl}
+					alt={cardDetails!.name}
+					width={500}
+					height={1000}
 				/>
 			</div>
 			<div className="flex flex-col gap-2">
@@ -74,6 +63,7 @@ export default function SearchResultCard({ id }: cardId) {
 				<h3 className="text-xl font-bold underline">{cardDetails?.name}</h3>
 				<p className="text-xl font-bold">${cardPrice?.price}</p>
 			</div>
-		</div>
+		</article>
 	);
-}
+};
+export default SearchResultCard;

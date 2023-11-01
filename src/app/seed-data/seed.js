@@ -134,9 +134,33 @@ const setData = [
 	}
 ];
 
+const cartData = [
+	{
+		userId: '1',
+		itemId: '24',
+		qty: 10
+	},
+	{
+		userId: '1',
+		itemId: '582',
+		qty: 3
+	},
+	{
+		userId: '1',
+		itemId: '95',
+		qty: 1
+	},
+	{
+		userId: '1',
+		itemId: '211',
+		qty: 7
+	}
+];
+
 module.exports = {
 	setData,
 	promotionData,
 	cardInventoryData,
-	cardTableData
+	cardTableData,
+	cartData
 };

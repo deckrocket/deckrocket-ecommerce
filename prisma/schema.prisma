@@ -63,10 +63,11 @@ model LastestSets {
 }
 
 model ShoppingCart {
-  id        Int      @id @default(autoincrement())
-  userId    String
-  itemId    String
-  qty       Int
+  id     Int    @id @default(autoincrement())
+  userId String
+  itemId String
+  qty    Int
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

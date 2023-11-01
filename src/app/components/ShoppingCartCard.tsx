@@ -40,7 +40,7 @@ export default function ShoppingCartCard({
 			<div className="flex flex-col gap-2">
 				<p className="text-sm text-gray-500">{setType}</p>
 				<p className="text-xs text-gray-500">
-					{quality} &middot; {foilType}
+					{quality} &middot; {foilType ? 'Foil' : 'Non-Foil'}
 				</p>
 				<h3 className="text-xl font-bold underline">{name}</h3>
 				<p className="text-xl font-bold">

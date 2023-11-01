@@ -2,7 +2,8 @@ const {
 	cardTableData,
 	cardInventoryData,
 	promotionData,
-	setData
+	setData,
+	cartData
 } = require('../src/app/seed-data/seed.js');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
@@ -77,6 +78,18 @@ async function main() {
 				imgUrl,
 				link,
 				latest
+			}
+		});
+	}
+
+	for (let item of cartData) {
+		const { userId, itemId, qty } = item;
+
+		await prisma.shoppingCart.create({
+			data: {
+				userId,
+				itemId,
+				qty
 			}
 		});
 	}

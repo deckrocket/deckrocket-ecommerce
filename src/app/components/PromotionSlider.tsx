@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { useEffect } from 'react';
+import setTempId from '../utils/setTempId';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -22,6 +24,10 @@ type PromotionInfoList = {
 };
 
 const PromotionSlider = ({ promoData }: PromotionInfoList) => {
+	useEffect(() => {
+		setTempId();
+	}, []);
+
 	return (
 		<Swiper
 			modules={[Navigation, Pagination, Autoplay]}

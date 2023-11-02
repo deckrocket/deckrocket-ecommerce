@@ -56,10 +56,14 @@ const CartPage = async () => {
 		})
 	);
 
+	const priceList = shoppingList.map((item) => {
+		return Number(item.price);
+	});
+
 	return (
 		<main className="flex flex-col w-full justify-center items-center p-4">
 			<h2>Shopping Cart</h2>
-			<CartSummary />
+			<CartSummary price={priceList} />
 			<section className="flex flex-col w-full justify-center items-center gap-4 mt-6">
 				{shoppingList.map((item) => {
 					return (

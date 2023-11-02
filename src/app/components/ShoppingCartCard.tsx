@@ -27,7 +27,7 @@ export default function ShoppingCartCard({
 	}
 
 	return (
-		<article className="flex gap-8 rounded bg-gray-200 max-w-[450px] p-4 shadow-md">
+		<article className="flex gap-8 rounded bg-gray-200 max-w-[450px] w-full p-4 shadow-md">
 			<div>
 				<Image
 					className="rounded"

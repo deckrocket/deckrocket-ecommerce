@@ -1,60 +1,27 @@
+'use client';
+import { useState, useEffect } from 'react';
 import CartSummary from '../components/CartSummary';
 import ShoppingCartCard from '../components/ShoppingCartCard';
-import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
+import { CartData } from '../utils/type';
 
-const CartPage = async () => {
-	const userId = '1';
-	const cartItems = await prisma.shoppingCart.findMany({
-		where: { userId: userId }
-	});
+const CartPage = () => {
+	const [shoppingList, setShoppingList] = useState<CartData[] | []>([]);
+	const [isLoading, setIsLoading] = useState(true);
 
-	const items = cartItems.map((item) => {
-		return [Number(item.itemId), item.qty];
-	});
+	useEffect(() => {
+		async function cartInfo() {
+			const res = await fetch('/api/cart');
+			const cartData = await res.json();
+			setShoppingList(cartData);
+			setIsLoading(false);
+		}
 
-	const shoppingList = await Promise.all(
-		items.map(async (item) => {
-			const { name, imageUrl, set, CardInventory } =
-				await prisma.card.findFirst({
-					where: {
-						CardInventory: {
-							some: {
-								id: item[0]
-							}
-						}
-					},
-					select: {
-						name: true,
-						imageUrl: true,
-						set: true,
-						CardInventory: {
-							where: {
-								id: item[0]
-							},
-							select: {
-								condition: true,
-								foil: true,
-								price: true
-							}
-						}
-					}
-				});
-			const { condition, foil, price } = CardInventory[0];
+		cartInfo();
+	}, []);
 
-			return {
-				id: item[0],
-				name,
-				imageUrl,
-				condition,
-				foil,
-				price,
-				set,
-				qty: item[1],
-				currency: 'CAD'
-			};
-		})
-	);
+	if (isLoading) {
+		return;
+	}
 
 	const priceList = shoppingList.map((item) => {
 		return Number(item.price);

@@ -28,13 +28,13 @@ export default function ShoppingCartCard({
 
 	return (
 		<article className="flex gap-8 rounded bg-gray-200 max-w-[450px] w-full p-4 shadow-md">
-			<div>
+			<div className="w-2/5">
 				<Image
-					className="rounded"
+					className="rounded h-auto"
 					src={imgUrl}
 					alt={name}
-					width={160}
-					height={200}
+					width={745}
+					height={1040}
 				/>
 			</div>
 			<div className="flex flex-col gap-2">

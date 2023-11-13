@@ -2,6 +2,7 @@
 import Image from 'next/image';
 
 type shoppingCartCard = {
+	itemId: string;
 	name: string;
 	qty: number;
 	imgUrl: string;
@@ -13,6 +14,7 @@ type shoppingCartCard = {
 };
 
 export default function ShoppingCartCard({
+	itemId,
 	name,
 	qty,
 	imgUrl,
@@ -22,7 +24,22 @@ export default function ShoppingCartCard({
 	setType,
 	currency
 }: shoppingCartCard) {
-	function onClickHandler() {
+	async function handleRemove() {
+		const userId = localStorage.getItem('id');
+
+		console.log(userId);
+
+		const res = await fetch('api/cart', {
+			method: 'DELETE',
+			headers: {
+				userId: userId!,
+				itemId
+			}
+		});
+		return;
+	}
+
+	async function handleChange() {
 		return;
 	}
 
@@ -47,7 +64,6 @@ export default function ShoppingCartCard({
 					${price} {currency}
 				</p>
 				<div className="flex justify-between items-center">
-					{/* Area to hold form input? for quantity and remove link */}
 					<input
 						className="text-sm text-center w-12 rounded border border-gray-300 py-1"
 						type="number"
@@ -55,8 +71,9 @@ export default function ShoppingCartCard({
 						min="1"
 						defaultValue={qty}
 						step={1}
+						onChange={handleChange}
 					/>
-					<p className="underline text-gray-500" onClick={onClickHandler}>
+					<p className="underline text-gray-500" onClick={handleRemove}>
 						Remove
 					</p>
 				</div>

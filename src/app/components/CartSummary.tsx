@@ -1,11 +1,12 @@
 import Link from 'next/link';
 
-type priceList = { price: number[] };
+type priceList = { price: number[]; qty: number[] };
 
-const CartSummary = ({ price }: priceList) => {
-	const itemTotal = Number(
-		price.reduce((acc, curr) => acc + curr, 0).toFixed(2)
-	);
+const CartSummary = ({ price, qty }: priceList) => {
+	let itemTotal = 0;
+	for (let i = 0; i < price.length; i++) {
+		itemTotal += price[i] * qty[i];
+	}
 	const shippingFee = 7.99;
 	const subtotal = (itemTotal + shippingFee).toFixed(2);
 

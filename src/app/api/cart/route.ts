@@ -3,10 +3,10 @@ import { prisma } from '@/db';
 import { NextResponse } from 'next/server';
 
 export async function GET(req: Request) {
-	const userId = '1';
+	const userId = req.headers.get('id');
 
 	const cartItems = await prisma.shoppingCart.findMany({
-		where: { userId }
+		where: { userId: userId! }
 	});
 
 	const items = cartItems.map((item) => {
@@ -58,3 +58,22 @@ export async function GET(req: Request) {
 
 	return NextResponse.json(shoppingList);
 }
+
+// export async function DELETE(req: Request) {
+// 	const userId = req.headers.get("userId");
+// 	const itemId = req.headers.get("itemId");
+
+// 	console.log(userId, itemId);
+
+// 	try {
+// 		await prisma.shoppingCart.delete({
+// 			where: {
+// 				userId: userId!,
+// 				itemId: itemId!
+// 			}
+// 		})
+// 	} catch (e) {
+// 		console.log(e);
+// 	}
+
+// }

@@ -9,33 +9,40 @@ const CartPage = () => {
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		async function cartInfo() {
-			const res = await fetch('/api/cart');
+		async function cartInfo(id: string) {
+			const res = await fetch('/api/cart', {
+				headers: {
+					id
+				}
+			});
 			const cartData = await res.json();
 			setShoppingList(cartData);
 			setIsLoading(false);
 		}
-
-		cartInfo();
+		const id = localStorage.getItem('id');
+		cartInfo(id!);
 	}, []);
 
 	if (isLoading) {
 		return;
 	}
 
+	const qtyList: number[] = [];
 	const priceList = shoppingList.map((item) => {
+		qtyList.push(item.qty);
 		return Number(item.price);
 	});
 
 	return (
 		<main className="flex flex-col w-full justify-center items-center p-4">
 			<h2>Shopping Cart</h2>
-			<CartSummary price={priceList} />
+			<CartSummary price={priceList} qty={qtyList} />
 			<section className="flex flex-col w-full justify-center items-center gap-4 mt-6">
 				{shoppingList.map((item) => {
 					return (
 						<ShoppingCartCard
 							key={item.id}
+							itemId={String(item.id)}
 							name={item.name}
 							qty={item.qty}
 							imgUrl={item.imageUrl}

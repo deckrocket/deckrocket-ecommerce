@@ -14,12 +14,14 @@
 	},
 	"dependencies": {
 		"@prisma/client": "^5.5.0",
+		"express": "^4.18.2",
 		"fs": "^0.0.1-security",
 		"next": "13.5.4",
 		"react": "^18",
 		"react-dom": "^18",
 		"sass": "^1.69.3",
-		"swiper": "^10.3.1"
+		"swiper": "^10.3.1",
+		"uuid": "^9.0.1"
 	},
 	"devDependencies": {
 		"@types/node": "^20.8.8",

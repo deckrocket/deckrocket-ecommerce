@@ -1,8 +1,7 @@
 import CardRecommend from './components/CardRecommend';
 import CardSetBanner from './components/CardSetBanner';
 import PromotionSlider from './components/PromotionSlider';
-import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
+import { prisma } from '@/db';
 
 export default async function Home() {
 	const promoData = await prisma.promotion.findMany({

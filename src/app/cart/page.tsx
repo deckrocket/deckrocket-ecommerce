@@ -7,6 +7,11 @@ import { CartData } from '../utils/type';
 const CartPage = () => {
 	const [shoppingList, setShoppingList] = useState<CartData[] | []>([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [refreshList, setRefreshList] = useState(false);
+
+	function updateList() {
+		setRefreshList(!refreshList);
+	}
 
 	useEffect(() => {
 		async function cartInfo(id: string) {
@@ -21,7 +26,7 @@ const CartPage = () => {
 		}
 		const id = localStorage.getItem('id');
 		cartInfo(id!);
-	}, []);
+	}, [refreshList]);
 
 	if (isLoading) {
 		return;
@@ -51,6 +56,7 @@ const CartPage = () => {
 							price={item.price}
 							setType={item.set}
 							currency={item.currency}
+							updateList={updateList}
 						/>
 					);
 				})}

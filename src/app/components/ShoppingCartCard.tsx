@@ -11,6 +11,7 @@ type shoppingCartCard = {
 	price: number;
 	setType: string;
 	currency: string;
+	updateList(): void;
 };
 
 export default function ShoppingCartCard({
@@ -22,25 +23,34 @@ export default function ShoppingCartCard({
 	foilType,
 	price,
 	setType,
-	currency
+	currency,
+	updateList
 }: shoppingCartCard) {
+	const userId = localStorage.getItem('id');
+
 	async function handleRemove() {
-		const userId = localStorage.getItem('id');
-
-		console.log(userId);
-
-		const res = await fetch('api/cart', {
+		await fetch('api/cart', {
 			method: 'DELETE',
 			headers: {
 				userId: userId!,
 				itemId
 			}
 		});
-		return;
+
+		updateList();
 	}
 
-	async function handleChange() {
-		return;
+	async function handleChange(e) {
+		await fetch('api/cart', {
+			method: 'PATCH',
+			body: JSON.stringify({
+				userId: userId!,
+				itemId: itemId,
+				qty: e.target.value
+			})
+		});
+
+		updateList();
 	}
 
 	return (

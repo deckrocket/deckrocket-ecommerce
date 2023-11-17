@@ -59,21 +59,40 @@ export async function GET(req: Request) {
 	return NextResponse.json(shoppingList);
 }
 
-// export async function DELETE(req: Request) {
-// 	const userId = req.headers.get("userId");
-// 	const itemId = req.headers.get("itemId");
+export async function DELETE(req: Request) {
+	const userId = req.headers.get('userId');
+	const itemId = req.headers.get('itemId');
 
-// 	console.log(userId, itemId);
+	try {
+		await prisma.shoppingCart.deleteMany({
+			where: {
+				userId: userId!,
+				itemId: itemId!
+			}
+		});
 
-// 	try {
-// 		await prisma.shoppingCart.delete({
-// 			where: {
-// 				userId: userId!,
-// 				itemId: itemId!
-// 			}
-// 		})
-// 	} catch (e) {
-// 		console.log(e);
-// 	}
+		return NextResponse.json({ message: 'Successfully deleted' });
+	} catch (e) {
+		console.log(e);
+	}
+}
 
-// }
+export async function PATCH(req: Request) {
+	const { userId, itemId, qty } = await req.json();
+
+	try {
+		await prisma.shoppingCart.updateMany({
+			where: {
+				userId,
+				itemId
+			},
+			data: {
+				qty: Number(qty)
+			}
+		});
+
+		return NextResponse.json({ status: 200 });
+	} catch (e) {
+		console.log(e);
+	}
+}

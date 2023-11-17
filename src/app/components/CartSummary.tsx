@@ -3,10 +3,12 @@ import Link from 'next/link';
 type priceList = { price: number[]; qty: number[] };
 
 const CartSummary = ({ price, qty }: priceList) => {
+	console.log(price, qty);
 	let itemTotal = 0;
 	for (let i = 0; i < price.length; i++) {
 		itemTotal += price[i] * qty[i];
 	}
+
 	const shippingFee = 7.99;
 	const subtotal = (itemTotal + shippingFee).toFixed(2);
 
@@ -20,7 +22,7 @@ const CartSummary = ({ price, qty }: priceList) => {
 				</div>
 				<div className="flex w-full justify-between">
 					<p className="w-2/3">Item Total</p>
-					<p className="w-1/3 text-center">${itemTotal}</p>
+					<p className="w-1/3 text-center">${itemTotal.toFixed(2)}</p>
 				</div>
 				<div className="flex w-full justify-between">
 					<p className="w-2/3">Estimate Shipping</p>

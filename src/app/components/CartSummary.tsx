@@ -3,7 +3,6 @@ import Link from 'next/link';
 type priceList = { price: number[]; qty: number[] };
 
 const CartSummary = ({ price, qty }: priceList) => {
-	console.log(price, qty);
 	let itemTotal = 0;
 	for (let i = 0; i < price.length; i++) {
 		itemTotal += price[i] * qty[i];

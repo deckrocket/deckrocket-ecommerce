@@ -40,7 +40,7 @@ export default function ShoppingCartCard({
 		updateList();
 	}
 
-	async function handleChange(e) {
+	async function handleChange(e: any) {
 		await fetch('api/cart', {
 			method: 'PATCH',
 			body: JSON.stringify({
@@ -64,7 +64,7 @@ export default function ShoppingCartCard({
 					height={1040}
 				/>
 			</div>
-			<div className="flex flex-col gap-2">
+			<div className="flex flex-col gap-2 w-1/2">
 				<p className="text-sm text-gray-500">{setType}</p>
 				<p className="text-xs text-gray-500">
 					{quality} &middot; {foilType ? 'Foil' : 'Non-Foil'}
@@ -83,7 +83,10 @@ export default function ShoppingCartCard({
 						step={1}
 						onChange={handleChange}
 					/>
-					<p className="underline text-gray-500" onClick={handleRemove}>
+					<p
+						className="underline text-gray-500 cursor-pointer"
+						onClick={handleRemove}
+					>
 						Remove
 					</p>
 				</div>

@@ -85,6 +85,7 @@ export default async function Home() {
 								key={card.id}
 								alt={card.name}
 								price={card.CardInventory[0].price}
+								link="/"
 							/>
 						);
 					})}

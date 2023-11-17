@@ -6,9 +6,16 @@ type CardRecommendInfo = {
 	imgUrl: string;
 	alt: string;
 	price: string;
+	link: string;
 };
 
-const CardRecommend = ({ name, imgUrl, alt, price }: CardRecommendInfo) => {
+const CardRecommend = ({
+	name,
+	imgUrl,
+	alt,
+	price,
+	link
+}: CardRecommendInfo) => {
 	return (
 		<div className="w-full">
 			<Link
